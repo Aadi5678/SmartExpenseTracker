@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ExpenseFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h2>ExpenseFlow</h2>
+    <a href="/dashboard">Dashboard</a>
+</header>
+
+<section class="hero">
+    <h1>Track Smarter. Spend Better.</h1>
+    <p>Your personal expense analytics platform</p>
+</section>
+
+<div class="container">
+
+<div class="card">
+
+<h3>Add Expense</h3>
+
+<form action="/add" method="post" class="form">
+<input name="amount" placeholder="Amount" required>
+<input name="category" placeholder="Category" required>
+<input type="date" name="date" required>
+<input name="note" placeholder="Note">
+<button>Add Expense</button>
+</form>
+
+</div>
+
+<div class="card">
+
+<h3>Recent Expenses</h3>
+
+<table>
+<tr>
+<th>Amount</th>
+<th>Category</th>
+<th>Date</th>
+<th>Note</th>
+<th>Action</th>
+</tr>
+
+{% for e in expenses %}
+<tr>
+<td>₹ {{e[1]}}</td>
+<td>{{e[2]}}</td>
+<td>{{e[3]}}</td>
+<td>{{e[4]}}</td>
+<td>
+<a href="/delete/{{e[0]}}" onclick="return confirm('Delete this expense?')" style="color:red;">Delete</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+<footer>
+ExpenseFlow © 2026
+</footer>
+
+</body>
+</html>

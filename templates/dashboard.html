@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+<h2>ExpenseFlow</h2>
+<a href="/">Home</a>
+</header>
+
+<div class="container">
+
+<div class="stats">
+<div class="stat-card">
+<h4>Total Spend</h4>
+<h2>₹ {{ total }}</h2>
+</div>
+</div>
+
+<div class="card">
+<h3>Category Analytics</h3>
+
+<table>
+<tr>
+<th>Category</th>
+<th>Total</th>
+</tr>
+
+{% for c in category_data %}
+<tr>
+<td>{{c[0]}}</td>
+<td>₹ {{c[1]}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+</div>
+
+<footer>
+ExpenseFlow © 2026
+</footer>
+
+</body>
+</html>
